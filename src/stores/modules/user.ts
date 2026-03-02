@@ -1,12 +1,28 @@
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { defineStore } from "pinia";
+import { userGetInfoService } from "@/api/user";
 
-export const useCounterStore = defineStore("counter", () => {
-  const count = ref(0);
-  const doubleCount = computed(() => count.value * 2);
-  function increment() {
-    count.value++;
-  }
+export const useUserStore = defineStore(
+  "user",
+  () => {
+    const token = ref("");
+    const setToken = (str: string) => {
+      token.value = str;
+    };
+    const removeToken = () => {
+      token.value = "";
+    };
 
-  return { count, doubleCount, increment };
-});
+    const user = ref({});
+    const getUser = async () => {
+      const res = await userGetInfoService(); // 请求获取数据
+      user.value = res.data.data;
+    };
+    const setUser = (obj: any) => {
+      user.value = obj;
+    };
+
+    return { token, setToken, removeToken, user, getUser, setUser };
+  },
+  { persist: true },
+);

@@ -1,8 +1,8 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
-export const useUserStore = defineStore(
-  "user",
+export const useCounterStore = defineStore(
+  "couter",
   () => {
     //一般是数据  然后是get   set   computed
     const token = ref("");

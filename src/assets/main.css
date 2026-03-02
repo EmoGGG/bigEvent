@@ -1,5 +1,4 @@
-@import './base.css';
-@import 'animate.css';
+@import "./base.css";
 #app {
   height: 100vh;
 }
