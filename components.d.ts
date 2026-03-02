@@ -37,6 +37,7 @@ declare module 'vue' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
+    PageContainer: typeof import('./src/components/PageContainer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
@@ -69,6 +70,7 @@ declare global {
   const ElTable: typeof import('element-plus/es')['ElTable']
   const ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
   const ElTag: typeof import('element-plus/es')['ElTag']
+  const PageContainer: typeof import('./src/components/PageContainer.vue')['default']
   const RouterLink: typeof import('vue-router')['RouterLink']
   const RouterView: typeof import('vue-router')['RouterView']
 }

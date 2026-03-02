@@ -1,6 +1,7 @@
 import axios from "axios";
 import type { AxiosResponse } from "axios";
 import { ElMessage } from "element-plus";
+import { useUserStore } from "@/stores/main";
 
 const NETWORK_ERROR = "网络错误，请联系开发人员";
 
@@ -14,13 +15,16 @@ export function createRequest(baseUrl: string) {
    */
   request.interceptors.request.use(
     (req: any) => {
-      // let UserStore = useUserStore()
-      // UserStore.setToken('Bearer '+'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ4ZHEtcG9sYXJpcy1hdXRoIiwiZXhwIjoxNzEzNTM2MzI4LCJ1c2VyQ29kZSI6InVzZXIyIiwiYmluZElEIjoyNywib3JnQ29kZSI6IumVv-Wym-S5i-aYpeWwj-WMuuS4muWnlOS8miIsInJvbGVDb2RlIjoi5Lia5aeU5Lya5oiQ5ZGYIn0.Kl-aNBvZdjToYkw9mjfRdjw3IwAmcWMNUd7tO7MP50Q')
-      // if (UserStore.token) {
-      //   req.headers.Authorization = UserStore.token
-      // }
+      let UserStore = useUserStore();
+      // UserStore.setToken(
+      //   "Bearer " +
+      //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ4ZHEtcG9sYXJpcy1hdXRoIiwiZXhwIjoxNzEzNTM2MzI4LCJ1c2VyQ29kZSI6InVzZXIyIiwiYmluZElEIjoyNywib3JnQ29kZSI6IumVv-Wym-S5i-aYpeWwj-WMuuS4muWnlOS8miIsInJvbGVDb2RlIjoi5Lia5aeU5Lya5oiQ5ZGYIn0.Kl-aNBvZdjToYkw9mjfRdjw3IwAmcWMNUd7tO7MP50Q",
+      // );
+      if (UserStore.token) {
+        req.headers.Authorization = UserStore.token;
+      }
 
-      req.headers.Authorization = "Bearer " + localStorage.getItem("token");
+      // req.headers.Authorization = "Bearer " + localStorage.getItem("token");
       return req;
     },
     (error: Error) => {

@@ -1,4 +1,4 @@
 <script lang="ts" setup></script>
-<template></template>
+<template>3</template>
 
 <style lang="less" scoped></style>
