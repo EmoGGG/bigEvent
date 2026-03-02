@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { useUserStore } from "@/stores/main";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/login", component: () => import("@/views/login/loginPage.vue") },
+    { path: "/login", component: () => import("@/views/login/LoginPage.vue") },
     {
       path: "/",
-      component: () => import("@/views/layout/layoutContainer.vue"), //为什么首字母要小写？？
+      component: () => import("@/views/layout/LayoutContainer.vue"), //为什么首字母要小写？？
       redirect: "/article/manage",
       children: [
         {
@@ -39,6 +40,8 @@ router.beforeEach((to) => {
   // 如果没有token, 且访问的是非登录页，拦截到登录，其他情况正常放行
   // const useStore = useUserStore();
   // if (!useStore.token && to.path !== "/login") return "/login";
+  const userStore = useUserStore();
+  if (to.path != "/login" && !userStore.token) return "/login";
 });
 
 export default router;

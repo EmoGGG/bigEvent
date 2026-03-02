@@ -13,9 +13,11 @@ export const useUserStore = defineStore(
       token.value = "";
     };
 
-    const user = ref({});
+    const user = ref<any>({});
     const getUser = async () => {
+      console.log(1);
       const res = await userGetInfoService(); // 请求获取数据
+      console.log(2);
       user.value = res.data.data;
     };
     const setUser = (obj: any) => {
