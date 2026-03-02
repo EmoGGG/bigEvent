@@ -3,10 +3,10 @@ import { createRouter, createWebHistory } from "vue-router";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: "/login", component: () => import("@/views/login/loginPage.vue") },
+    { path: "/login", component: () => import("@/views/login/LoginPage.vue") },
     {
       path: "/",
-      component: () => import("@/views/layout/layoutContainer.vue"), //为什么首字母要小写？？
+      component: () => import("@/views/layout/LayoutContainer.vue"), //为什么首字母要小写？？
       redirect: "/article/manage",
       children: [
         {
