@@ -13,6 +13,7 @@ import {
   CaretBottom,
 } from "@element-plus/icons-vue";
 import { ElMessage, ElMessageBox } from "element-plus";
+import avatar from "@/assets/default.png";
 const userStore = useUserStore();
 const router = useRouter();
 userStore.getUser().then(() => {
@@ -110,7 +111,7 @@ const logout = () => {
           <el-dropdown placement="bottom-end" @command="handleCommand">
             <!-- 这是展示给用户看的部分 -->
             <span class="el-dropdown_box">
-              <el-avatar :src="userStore.user.user_pic" />
+              <el-avatar :src="userStore.user.user_pic || avatar" />
               <el-icon><CaretBottom /></el-icon>
             </span>
 
