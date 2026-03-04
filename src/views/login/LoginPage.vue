@@ -98,11 +98,11 @@ const back = () => {
         <el-form-item>
           <h1>登录</h1>
         </el-form-item>
-        <el-form-item label="用户名" prop="username" placeholder="请输入用户名">
+        <el-form-item label="用户名" prop="username">
           <el-input
             v-model="ruleForm.username"
             :prefix-icon="User"
-            placeholder="请输入用户名"
+            placeholder="请输入用户名：zbc123456"
           ></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
@@ -110,7 +110,7 @@ const back = () => {
             type="password"
             v-model="ruleForm.password"
             :prefix-icon="Lock"
-            placeholder="请输入密码"
+            placeholder="请输入密码：123456"
           ></el-input>
         </el-form-item>
         <el-form-item>
