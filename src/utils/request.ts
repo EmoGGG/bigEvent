@@ -2,6 +2,7 @@ import axios from "axios";
 import type { AxiosResponse } from "axios";
 import { ElMessage } from "element-plus";
 import { useUserStore } from "@/stores/main";
+import router from "@/router";
 
 const NETWORK_ERROR = "网络错误，请联系开发人员";
 
@@ -20,6 +21,7 @@ export function createRequest(baseUrl: string) {
       //   "Bearer " +
       //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ4ZHEtcG9sYXJpcy1hdXRoIiwiZXhwIjoxNzEzNTM2MzI4LCJ1c2VyQ29kZSI6InVzZXIyIiwiYmluZElEIjoyNywib3JnQ29kZSI6IumVv-Wym-S5i-aYpeWwj-WMuuS4muWnlOS8miIsInJvbGVDb2RlIjoi5Lia5aeU5Lya5oiQ5ZGYIn0.Kl-aNBvZdjToYkw9mjfRdjw3IwAmcWMNUd7tO7MP50Q",
       // );
+      console.log(UserStore.token);
       if (UserStore.token) {
         req.headers.Authorization = UserStore.token;
       }
@@ -45,7 +47,14 @@ export function createRequest(baseUrl: string) {
       }
     },
     (error: Error) => {
-      ElMessage.error(error.message || "服务异常");
+      if (error.message == "Request failed with status code 401") {
+        let UserStore = useUserStore();
+        UserStore.setToken("");
+        router.push("/login");
+        ElMessage.error("登录失效");
+      } else {
+        ElMessage.error(error.message || "服务异常");
+      }
       return Promise.reject(error);
     },
   );

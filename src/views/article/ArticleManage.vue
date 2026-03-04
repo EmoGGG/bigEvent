@@ -33,6 +33,7 @@ const onSearch = () => {
 };
 const onReset = () => {
   articlePage.value = { ...blankPage };
+  getArticleList();
 };
 const getArticleList = async () => {
   const res = await artGetListService(articlePage.value);

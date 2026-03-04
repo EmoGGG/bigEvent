@@ -193,6 +193,13 @@ async function imageUrlToFileObject(imageUrl: any, filename: any) {
     height: 178px;
     display: block;
   }
+  .el-icon.avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    text-align: center;
+  }
   ::v-deep {
     .el-upload {
       border: 1px dashed var(--el-border-color);
@@ -204,13 +211,6 @@ async function imageUrlToFileObject(imageUrl: any, filename: any) {
     }
     .el-upload:hover {
       border-color: var(--el-color-primary);
-    }
-    .el-icon.avatar-uploader-icon {
-      font-size: 28px;
-      color: #8c939d;
-      width: 178px;
-      height: 178px;
-      text-align: center;
     }
   }
 }
